@@ -1,0 +1,74 @@
+# 📚 Estudo de Caso - Listagem de Alunos (Web + Mobile)
+
+Este projeto é um estudo de caso dividido em duas aplicações:
+
+| Projeto | Tecnologia |
+|--------|------------|
+| `/web` | React + Vite + Axios + React Router DOM + Vitest |
+| `/mobile` | React Native + Expo |
+
+O objetivo é consumir a **API REST de alunos**, exibir lista e detalhes, implementar rotas e testes automatizados.
+
+---
+
+## 🌐 Parte Web (React + Vite)
+
+### 🛠 Tecnologias utilizadas
+- React
+- Vite
+- Axios
+- React Router DOM
+- Bootstrap
+- Vitest + React Testing Library
+
+### ▶ Executar`
+ localmente
+
+```bash
+cd web
+npm install
+```
+## 🧪 Executar testes
+
+Para rodar os testes automatizados do projeto Web, execute:
+
+```bash
+npm run test
+```
+## 📡 API utilizada
+
+Documentação Swagger:
+https://proweb.leoproti.com.br/swagger-ui/index.html
+
+Endpoints importantes:
+| Ação                | Método | URL            |
+| ------------------- | ------ | -------------- |
+| Listar alunos       | GET    | `/alunos`      |
+| Buscar aluno por id | GET    | `/alunos/{id}` |
+
+## 📱 Parte Mobile (Expo + React Native)
+
+📌 Em construção.
+
+## 🚀 Deploy Web no Vercel
+
+Criar conta: https://vercel.com
+
+Conectar ao GitHub
+
+Selecionar o repositório meu-estudo-caso
+
+Ao escolher o projeto, marcar a pasta web/
+
+Build Framework: Vite
+
+Variable Build Command: npm run build
+
+Output: dist
+
+Publicar
+
+## 👩‍💻 Autora
+
+Projeto desenvolvido por Luiza como estudo de caso acadêmico.
+
