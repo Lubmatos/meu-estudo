@@ -21,33 +21,23 @@ export default function AlunoDetalhes() {
 
   return (
     <Container 
-      className="d-flex justify-content-center align-items-start mt-4" 
+      className="d-flex justify-content-center align-items-start mt-4"
       style={{ minHeight: "80vh" }}
     >
       <Card style={{ maxWidth: "600px", width: "100%" }}>
         <Card.Body>
           <h2 className="text-center mb-3">{aluno.nome}</h2>
 
-          <div className="mb-2">
-            <strong>ID:</strong> {aluno.id}
-          </div>
-
-          <div className="mb-2">
-            <strong>Email:</strong> {aluno.email || "Não informado"}
-          </div>
-
-          <div className="mb-4">
-            <strong>Idade:</strong> {aluno.idade || "Não informada"}
-          </div>
+          <div className="mb-2"><strong>ID:</strong> {aluno.id}</div>
+          <div className="mb-2"><strong>Turma:</strong> {aluno.turma || "Não informada"}</div>
+          <div className="mb-2"><strong>Curso:</strong> {aluno.curso || "Não informado"}</div>
+          <div className="mb-4"><strong>Matrícula:</strong> {aluno.matricula || "Não informada"}</div>
 
           <div className="d-flex justify-content-center">
-            <Link to="/" className="btn btn-secondary">
-              Voltar
-            </Link>
+            <Link to="/" className="btn btn-secondary">Voltar</Link>
           </div>
         </Card.Body>
       </Card>
     </Container>
   );
 }
-

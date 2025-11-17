@@ -17,10 +17,7 @@ export default function Home() {
   );
 
   return (
-    <Container
-      className="d-flex justify-content-center align-items-start mt-4"
-      style={{ minHeight: "80vh" }}
-    >
+    <Container className="d-flex justify-content-center mt-4">
       <Card style={{ maxWidth: "900px", width: "100%" }}>
         <Card.Body>
           <h2 className="text-center mb-3">Lista de Alunos</h2>
@@ -28,7 +25,9 @@ export default function Home() {
             Consulte os alunos cadastrados e clique em "Ver detalhes".
           </p>
 
-          <Row className="mb-3">
+          {/* LINHA DE BUSCA CORRIGIDA */}
+
+          <Row className="align-items-center mb-3">
             <Col md={10}>
               <Form.Control
                 type="text"
@@ -37,7 +36,8 @@ export default function Home() {
                 onChange={(e) => setBusca(e.target.value)}
               />
             </Col>
-            <Col md={2}>
+
+            <Col md={2} className="d-flex justify-content-end">
               <Button
                 variant="secondary"
                 className="w-100"
@@ -48,10 +48,11 @@ export default function Home() {
             </Col>
           </Row>
 
+          {/* TABELA */}
           <Table striped bordered hover responsive>
             <thead>
               <tr>
-                <th>EU IA</th>
+                <th>IA da UE</th>
                 <th>Nome</th>
                 <th>Detalhes</th>
               </tr>
