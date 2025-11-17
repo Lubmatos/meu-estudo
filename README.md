@@ -48,7 +48,37 @@ Endpoints importantes:
 
 ## 📱 Parte Mobile (Expo + React Native)
 
-📌 Em construção.
+A aplicação mobile consome a mesma API do professor e possui:
+- Tela inicial com lista de alunos
+- Tela de detalhes com informações individuais
+- Navegação entre telas
+- Requisições feitas com Axios
+
+## 🛠 Tecnologias utilizadas 
+
+- Expo
+- React Native
+- React Navigation
+- Axios
+- VsCode
+- JavaScript
+
+## Executar
+
+Entrar na pasta
+```bash 
+cd mobile
+npm install
+npx expo install @react-navigation/native @react-navigation/native-stack react-native-screens react-native-safe-area-context
+npm install axios
+npx expo start
+```
+
+📱 A aplicação pode ser aberta em:
+
+- Expo Go (Android ou iPhone)
+- Browser (tecla w)
+
 
 ## 🚀 Deploy Web no Vercel
 
