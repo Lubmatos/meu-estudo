@@ -1,143 +1,77 @@
-
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Table,
-  Spinner,
-  Alert,
-  Form,
-  InputGroup,
-  Button,
-} from "react-bootstrap";
 import { getAlunos } from "../api/alunosApi";
+import { Link } from "react-router-dom";
+import { Container, Table, Card, Form, Button, Row, Col } from "react-bootstrap";
 
 export default function Home() {
   const [alunos, setAlunos] = useState([]);
-  const [filtrados, setFiltrados] = useState([]);
   const [busca, setBusca] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [erro, setErro] = useState(null);
 
   useEffect(() => {
-    async function carregarAlunos() {
-      try {
-        setLoading(true);
-        setErro(null);
-
-        const res = await getAlunos();
-        setAlunos(res.data);
-        setFiltrados(res.data);
-      } catch (e) {
-        console.error(e);
-        setErro("Não foi possível carregar a lista de alunos.");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    carregarAlunos();
+    getAlunos().then((res) => setAlunos(res.data));
   }, []);
 
-  
-  useEffect(() => {
-    const termo = busca.toLowerCase();
-    const resultado = alunos.filter(
-      (a) =>
-        String(a.id).includes(termo) ||
-        a.nome.toLowerCase().includes(termo)
-    );
-    setFiltrados(resultado);
-  }, [busca, alunos]);
+  const alunosFiltrados = alunos.filter((a) =>
+    a.nome.toLowerCase().includes(busca.toLowerCase()) ||
+    a.id.toString().includes(busca)
+  );
 
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col>
-          <Card className="shadow-sm">
-            <Card.Body>
-              <Card.Title className="mb-3">Lista de Alunos</Card.Title>
-              <Card.Text className="text-muted mb-4">
-                Consulte os alunos cadastrados na API do professor e clique em
-                &quot;Ver detalhes&quot; para mais informações.
-              </Card.Text>
+    <Container
+      className="d-flex justify-content-center align-items-start mt-4"
+      style={{ minHeight: "80vh" }}
+    >
+      <Card style={{ maxWidth: "900px", width: "100%" }}>
+        <Card.Body>
+          <h2 className="text-center mb-3">Lista de Alunos</h2>
+          <p className="text-center text-muted">
+            Consulte os alunos cadastrados e clique em "Ver detalhes".
+          </p>
 
-              {/* Campo de busca */}
-              <Form className="mb-3">
-                <InputGroup>
-                  <Form.Control
-                    type="text"
-                    placeholder="Buscar por nome ou ID..."
-                    value={busca}
-                    onChange={(e) => setBusca(e.target.value)}
-                  />
-                  <Button
-                    variant="outline-secondary"
-                    onClick={() => setBusca("")}
-                  >
-                    Limpar
-                  </Button>
-                </InputGroup>
-              </Form>
+          <Row className="mb-3">
+            <Col md={10}>
+              <Form.Control
+                type="text"
+                placeholder="Buscar por nome ou ID..."
+                value={busca}
+                onChange={(e) => setBusca(e.target.value)}
+              />
+            </Col>
+            <Col md={2}>
+              <Button
+                variant="secondary"
+                className="w-100"
+                onClick={() => setBusca("")}
+              >
+                Limpar
+              </Button>
+            </Col>
+          </Row>
 
-              {/* Erro */}
-              {erro && (
-                <Alert variant="danger" className="mb-3">
-                  {erro}
-                </Alert>
-              )}
-
-              {/* Loading */}
-              {loading ? (
-                <div className="d-flex justify-content-center py-4">
-                  <Spinner animation="border" role="status" />
-                </div>
-              ) : (
-                <div className="table-responsive">
-                  <Table striped bordered hover size="sm">
-                    <thead className="table-dark">
-                      <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th className="text-center">Detalhes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filtrados.length === 0 ? (
-                        <tr>
-                          <td colSpan={3} className="text-center py-4">
-                            Nenhum aluno encontrado.
-                          </td>
-                        </tr>
-                      ) : (
-                        filtrados.map((a) => (
-                          <tr key={a.id}>
-                            <td>{a.id}</td>
-                            <td>{a.nome}</td>
-                            <td className="text-center">
-                              <Button
-                                as={Link}
-                                to={`/aluno/${a.id}`}
-                                size="sm"
-                                variant="primary"
-                              >
-                                Ver detalhes
-                              </Button>
-                            </td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </Table>
-                </div>
-              )}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+          <Table striped bordered hover responsive>
+            <thead>
+              <tr>
+                <th>EU IA</th>
+                <th>Nome</th>
+                <th>Detalhes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {alunosFiltrados.map((a) => (
+                <tr key={a.id}>
+                  <td>{a.id}</td>
+                  <td>{a.nome}</td>
+                  <td>
+                    <Link to={`/aluno/${a.id}`} className="btn btn-primary btn-sm">
+                      Ver também
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Card.Body>
+      </Card>
     </Container>
   );
 }
