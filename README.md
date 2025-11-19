@@ -13,6 +13,12 @@ O objetivo é consumir a **API REST de alunos**, exibir lista e detalhes, implem
 
 ## 🌐 Parte Web (React + Vite)
 
+
+
+### ▶ Link do Site 
+
+https://meu-estudo-git-main-luiza-matos-projects.vercel.app/
+
 ### 🛠 Tecnologias utilizadas
 - React
 - Vite
@@ -21,10 +27,38 @@ O objetivo é consumir a **API REST de alunos**, exibir lista e detalhes, implem
 - Bootstrap
 - Vitest + React Testing Library
 
-### ▶ Link do Site 
+## ▶ Passos para rodar localmente
+```bash
+cd web
+npm install
+npm run dev
+```
+## 🧪 Instruções para rodar testes com Vitest
+```bash
+cd web
+npm run test
+```
+Os testes incluem:
+- Renderização dos componentes
+- Verificação da lista de alunos
+- Teste da navegação entre rotas
+- Teste de requisições mockadas da API
 
-https://meu-estudo-git-main-luiza-matos-projects.vercel.app/
+## 🧭 Explicação das rotas utilizadas:
 
+O projeto utiliza React Router DOM para navegação:
+
+| Rota         | Componente          | Descrição                              |
+| ------------ | ------------------- | -------------------------------------- |
+| `/`          | `AlunoList.jsx`     | Lista todos os alunos consumindo a API |
+| `/aluno/:id` | `AlunoDetalhes.jsx` | Exibe os detalhes do aluno selecionado |
+| `*`          | `NotFound.jsx`      | Página para rotas inválidas            |
+
+Fluxo das rotas: 
+1- O usuário acessa / → vê a lista de alunos
+2 -Ao clicar em “Ver detalhes”, é redirecionado para /aluno/{id}
+3- A tela de detalhes faz uma nova requisição API utilizando o id
+4 - Caso digite uma rota inválida, cai no NotFound
 
 ## 📡 API utilizada
 
