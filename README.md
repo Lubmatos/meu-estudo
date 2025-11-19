@@ -21,20 +21,11 @@ O objetivo é consumir a **API REST de alunos**, exibir lista e detalhes, implem
 - Bootstrap
 - Vitest + React Testing Library
 
-### ▶ Executar`
- localmente
+### ▶ Link do Site 
 
-```bash
-cd web
-npm install
-```
-## 🧪 Executar testes
+https://meu-estudo-git-main-luiza-matos-projects.vercel.app/
 
-Para rodar os testes automatizados do projeto Web, execute:
 
-```bash
-npm run test
-```
 ## 📡 API utilizada
 
 Documentação Swagger:
