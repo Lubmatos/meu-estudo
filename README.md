@@ -55,10 +55,10 @@ O projeto utiliza React Router DOM para navegação:
 | `*`          | `NotFound.jsx`      | Página para rotas inválidas            |
 
 Fluxo das rotas: 
-1- O usuário acessa / → vê a lista de alunos
-2 -Ao clicar em “Ver detalhes”, é redirecionado para /aluno/{id}
-3- A tela de detalhes faz uma nova requisição API utilizando o id
-4 - Caso digite uma rota inválida, cai no NotFound
+- 1- O usuário acessa / → vê a lista de alunos
+- 2 -Ao clicar em “Ver detalhes”, é redirecionado para /aluno/{id}
+- 3- A tela de detalhes faz uma nova requisição API utilizando o id
+- 4 - Caso digite uma rota inválida, cai no NotFound
 
 ## 📡 API utilizada
 
